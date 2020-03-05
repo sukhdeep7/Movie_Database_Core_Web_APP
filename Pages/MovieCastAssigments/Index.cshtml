@@ -1,0 +1,42 @@
+﻿@page
+@model Movie_Database_Core_Web_APP.Pages.MovieCastAssigments.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Movie Cast Assigments</h1>
+
+<p>
+    <a class="btn btn-primary" asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MovieCastAssignment[0].Actor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MovieCastAssignment[0].Movie)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.MovieCastAssignment) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Actor.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Movie.Name)
+            </td>
+            <td>
+                <a class="btn btn-primary" asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a class="btn btn-primary" asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a class="btn btn-primary" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
